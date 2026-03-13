@@ -6,26 +6,28 @@ Penjelasan Kode:
   <img width="574" height="571" alt="Image" src="https://github.com/user-attachments/assets/c76a8e7e-fef8-4ce1-9417-5fb3549ae98a" />
 
 3. Menambahkan program index.html pada resources/static untuk tampilan web:
+   
    <img width="314" height="85" alt="Image" src="https://github.com/user-attachments/assets/b641ce80-4ec8-496c-96de-596f5efe5237" />
 
-4. Query MySQL untuk tabel ktp:
+5. Query MySQL untuk tabel ktp:
+   
    <img width="436" height="212" alt="Image" src="https://github.com/user-attachments/assets/7b78b22c-2bb2-469a-a273-ebc619379c68" />
 
-5. Struktur kode KtpController:
-package com.example.demo.controller;
+6. Struktur kode KtpController:
+  package com.example.demo.controller;
 
-import com.example.demo.dto.KtpDto;
-import com.example.demo.service.KtpService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+  import com.example.demo.dto.KtpDto;
+  import com.example.demo.service.KtpService;
+  import org.springframework.beans.factory.annotation.Autowired;
+  import org.springframework.http.ResponseEntity;
+  import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+  import java.util.List;
 
-@RestController
-@RequestMapping("/api/ktp")
-@CrossOrigin(origins = "*")
-public class KtpController {
+  @RestController
+  @RequestMapping("/api/ktp")
+  @CrossOrigin(origins = "*")
+  public class KtpController {
 
     @Autowired
     private KtpService service;
@@ -56,3 +58,9 @@ public class KtpController {
         return ResponseEntity.ok("Data berhasil dihapus!");
     }
 }
+
+6. Struktur kode untuk KtpDto.java:
+   
+   <img width="459" height="365" alt="Image" src="https://github.com/user-attachments/assets/3f2398d4-9d35-4232-b0ff-60c266e52cae" />
+
+   
