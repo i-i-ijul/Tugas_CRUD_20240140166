@@ -8,4 +8,7 @@ Penjelasan Kode:
 3. Menambahkan program index.html pada resources/static untuk tampilan web:
    <img width="314" height="85" alt="Image" src="https://github.com/user-attachments/assets/b641ce80-4ec8-496c-96de-596f5efe5237" />
 
-4. 
+4. Query MySQL untuk tabel ktp:
+   <img width="436" height="212" alt="Image" src="https://github.com/user-attachments/assets/7b78b22c-2bb2-469a-a273-ebc619379c68" />
+
+
