@@ -63,4 +63,6 @@ Penjelasan Kode:
    
    <img width="459" height="365" alt="Image" src="https://github.com/user-attachments/assets/3f2398d4-9d35-4232-b0ff-60c266e52cae" />
 
+7. Struktur kode KtpMapper.java:
    
+   <img width="719" height="823" alt="Image" src="https://github.com/user-attachments/assets/f7b9d844-c8d9-412a-8cb6-297d648db901" />
