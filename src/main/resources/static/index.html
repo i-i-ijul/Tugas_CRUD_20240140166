@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manajemen KTP</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        .form-group { margin-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    </style>
+</head>
+<body>
+<h2>Form KTP</h2>
+<form id="ktpForm">
+    <input type="hidden" id="id">
+    <div class="form-group"><input type="text" id="nomorKtp" placeholder="Nomor KTP" required></div>
+    <div class="form-group"><input type="text" id="namaLengkap" placeholder="Nama Lengkap" required></div>
+    <div class="form-group"><input type="text" id="alamat" placeholder="Alamat"></div>
+    <div class="form-group"><input type="date" id="tanggalLahir"></div>
+    <div class="form-group">
+        <select id="jenisKelamin">
+            <option value="Laki-laki">Laki-laki</option>
+            <option value="Perempuan">Perempuan</option>
+        </select>
+    </div>
+    <button type="submit">Simpan</button>
+    <button type="button" onclick="resetForm()">Reset</button>
+</form>
+
+<table id="ktpTable">
+    <thead>
+    <tr>
+        <th>No KTP</th><th>Nama</th><th>Alamat</th><th>Aksi</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script>
+    const API_URL = "/ktp";
+
+    $(document).ready(() => {
+        loadTable();
+
+        $('#ktpForm').submit(function(e) {
+            e.preventDefault();
+            let id = $('#id').val();
+            let method = id ? "PUT" : "POST";
+            let url = id ? `${API_URL}/${id}` : API_URL;
+
+            let data = {
+                nomorKtp: $('#nomorKtp').val(),
+                namaLengkap: $('#namaLengkap').val(),
+                alamat: $('#alamat').val(),
+                tanggalLahir: $('#tanggalLahir').val(),
+                jenisKelamin: $('#jenisKelamin').val()
+            };
+
+            $.ajax({
+                url: url, type: method,
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: () => { alert("Sukses!"); resetForm(); loadTable(); },
+                error: (err) => alert(err.responseText || "Terjadi kesalahan")
+            });
+        });
+    });
+
+    function loadTable() {
+        $.get(API_URL, (data) => {
+            let rows = '';
+            data.forEach(k => {
+                rows += `<tr>
+                    <td>${k.nomorKtp}</td><td>${k.namaLengkap}</td><td>${k.alamat}</td>
+                    <td>
+                        <button onclick="editData(${k.id})">Edit</button>
+                        <button onclick="deleteData(${k.id})">Hapus</button>
+                    </td>
+                </tr>`;
+            });
+            $('#ktpTable tbody').html(rows);
+        });
+    }
+
+    function editData(id) {
+        $.get(`${API_URL}/${id}`, (data) => {
+            $('#id').val(data.id);
+            $('#nomorKtp').val(data.nomorKtp).prop('disabled', true);
+            $('#namaLengkap').val(data.namaLengkap);
+            $('#alamat').val(data.alamat);
+            $('#tanggalLahir').val(data.tanggalLahir);
+            $('#jenisKelamin').val(data.jenisKelamin);
+        });
+    }
+
+    function deleteData(id) {
+        if(confirm("Hapus data?")) {
+            $.ajax({
+                url: `${API_URL}/${id}`, type: "DELETE",
+                success: () => { alert("Terhapus"); loadTable(); }
+            });
+        }
+    }
+
+    function resetForm() {
+        $('#id').val('');
+        $('#ktpForm')[0].reset();
+        $('#nomorKtp').prop('disabled', false);
+    }
+</script>
+</body>
+</html>
