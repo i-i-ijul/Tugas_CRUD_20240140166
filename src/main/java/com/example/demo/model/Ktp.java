@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Entity
 @Table(name = "ktp")
-@Data // Menggunakan Lombok untuk Getter/Setter, jika tidak ada silakan buat manual
+@Data
 public class Ktp {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +16,6 @@ public class Ktp {
 
     private String namaLengkap;
     private String alamat;
-    private String tanggalLahir; // Bisa diganti LocalDate jika ingin lebih presisi
+    private String tanggalLahir;
     private String jenisKelamin;
 }
