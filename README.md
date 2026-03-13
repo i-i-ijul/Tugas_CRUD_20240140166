@@ -74,3 +74,7 @@ Penjelasan Kode:
 9. Tampilan Web:
 
     <img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/e7b9f507-e6c8-417a-abaa-3b0cce3331dd" />
+
+10. Pop Up (interaksi dengan user) ketika menghapus data:
+
+    <img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/da2fa1dc-77a3-4d30-b75d-66e4ae1a5fce" />
